@@ -14,7 +14,7 @@ Należy napisać:
    - serwujący pliki html, png i css z folderu static
    - wystawiający endpoint /upload-form-endpoint
      - przyjmujący żądanie POST z formularza w pliku index.html zawierające adres email, checkbox 'zgadzam się' i input uploadujący obrazek PNG
-     - checkbox musi być zaznaczony
+     - checkbox musi być zaznaczony jeśli - nie jest przekierowanie na failure.html
      - wysyłany plik musi być poprawnym obrazkiem PNG, należy go zapisać jako static/uploads/image.png
      - jeśli podany email lub obrazek nie jest poprawny przekierowujący na failure.html
      - jeśli podany email i obrazek jest poprawny przekierowujący na success.html
