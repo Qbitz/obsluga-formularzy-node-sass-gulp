@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>INDEX HTML</title>
+
+    <link href="/css/styles.css" media="all" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <h1>Formularz uploadu plików</h1>
+
+        <form action="/upload-form-endpoint" method="POST">
+            <p>
+                <label for="email">E-mail</label><br />
+                <input type="text" id="email" name="email">
+            </p>
+            <p>
+                <label for="image">Obrazek</label><br />
+                <input type="file" id="image" name="image" accept="image/png">
+            </p>
+            <p>
+                <label for="accept-terms">
+                    <input type="checkbox" id="accept-terms" name="accept-terms" /> Akceptuje warunki aplołdu pliku
+                </label>
+            </p>
+            <p>
+                <button type="reset">Resetuj formularz</button>
+                <button type="submit">Wyślij plik</button>
+            </p>
+        </form>
+    </div>
+
+</body>
+</html>
