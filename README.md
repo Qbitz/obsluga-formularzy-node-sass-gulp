@@ -5,13 +5,13 @@ Czas realizacji: 10h
 Należy napisać:
 
  - gulpfile 
-   - uruchamiający serwer
-   - kompilujący plik styles.sass do static/css/styles.css
-   - sprawdzający modyfikację plików js, sass i restartujący serwer/rekompilujący pliki sass
-   - restartujący stronę w przeglądarce po zmianie plików
+   + uruchamiający serwer
+   + kompilujący plik styles.sass do static/css/styles.css
+   + sprawdzający modyfikację plików js, sass i restartujący serwer/rekompilujący pliki sass
+   + restartujący stronę w przeglądarce po zmianie plików
  - plik aplikacji server.js 
-   - działający na porcie 3000
-   - serwujący pliki html, png i css z folderu static
+   + działający na porcie 3000
+   + serwujący pliki html, png i css z folderu static
    - wystawiający endpoint /upload-form-endpoint
      - przyjmujący żądanie POST z formularza w pliku index.html zawierające adres email, checkbox 'zgadzam się' i input uploadujący obrazek PNG
      - checkbox musi być zaznaczony jeśli - nie jest przekierowanie na failure.html
@@ -30,6 +30,6 @@ Należy wykorzystać:
 
  - gulp
  - node
- - express
- - libsass
+ - express 
+ - libsass   //gulp-sass
  - browser-sync
