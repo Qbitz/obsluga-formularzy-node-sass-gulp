@@ -21,30 +21,25 @@ app.use(bodyParser.urlencoded({
 }));
 
 
-
-
 app.post('/upload-form-endpoint', function(req, res) {
 	var email = req.body['email'];
 	var img = req.body['image'];
 	var checkbox = req.body['accept-terms'];
-	upload(req,res,function(err) {
-        if(err) {
-            return console.log("Error uploading file.");
-        }
-        console.log("File is uploaded");
-    });
 	
 	if (req.method === "POST") {
+		upload(req,res,function(err) {
+		    if(err) {
+		        return console.log("Error uploading file.");
+		    }
+		    console.log("File is uploaded");
+		});
 
-		if (img && checkbox && email) {
+		if (email && img && checkbox) {
 			res.redirect(302, 'success.html');
 			//console.log("Good job!");
 			//console.log(req.files.image.name);
 		}
 		//JAK ZROBIĆ POP-UP !!!
-		else if (email === false) {
-			res.status(400).send("You have entered an invalid email address!");
-		}
 		
 		else {
 			res.redirect(302, 'failure.html');
