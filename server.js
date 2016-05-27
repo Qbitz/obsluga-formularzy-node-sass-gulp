@@ -1,30 +1,42 @@
 var express = require ('express');
 var bodyParser = require('body-parser');
 var fs = require('fs');
+var multer = require('multer');
 var app = express();
-
 var port = 5000;
+var storage = multer.diskStorage({
+  destination: function (req, file, callback) {
+    callback(null, './static/uploads');
+  },
+  filename: function (req, file, callback) {
+    callback(null, 'image.png');
+  }
+});
+
+var upload = multer({ storage : storage }).single('image');
 
 app.use(express.static('static'));
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-/*
-app.get('/', function (req, res) {
-	res.sendfile('./static/success.html');
-});
-*/
+
+
+
 
 app.post('/upload-form-endpoint', function(req, res) {
-	var email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(req.body['email']);
+	var email = req.body['email'];
 	var img = req.body['image'];
 	var checkbox = req.body['accept-terms'];
+	upload(req,res,function(err) {
+        if(err) {
+            return console.log("Error uploading file.");
+        }
+        console.log("File is uploaded");
+    });
 	
-	var tempPath = req.files.file.path;
-    var targetPath = path.resolve('./static/uploads/image.png');
 	if (req.method === "POST") {
-		if (email && img && checkbox) {
-			res.sendfile(path.resolve('./uploads/image.png'));
+
+		if (img && checkbox && email) {
 			res.redirect(302, 'success.html');
 			//console.log("Good job!");
 			//console.log(req.files.image.name);
