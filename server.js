@@ -13,36 +13,46 @@ var storage = multer.diskStorage({
   }
 });
 
-var upload = multer({ storage : storage }).single('image');
+var upload = multer({ storage : storage }) //.single('image');
 
 app.use(express.static('static'));
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+app.get ('/', function (req, res) {
+	res.render('./staic/index');
+})
 
-app.post('/upload-form-endpoint', function(req, res) {
-	var email = req.body['email'];
+
+app.post('/upload-form-endpoint', upload.single('image'), function(req, res) {
+	var email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(req.body['email']);
+	//var email = req.body['email'];
 	var img = req.body['image'];
 	var checkbox = req.body['accept-terms'];
 	
 	if (req.method === "POST") {
-		upload(req,res,function(err) {
+		/*upload(req,res,function(err) {
 		    if(err) {
 		        return console.log("Error uploading file.");
 		    }
 		    console.log("File is uploaded");
-		});
+		});*/
 
-		if (email && img && checkbox) {
+		if (email && checkbox && typeof img != null) {
 			res.redirect(302, 'success.html');
-			//console.log("Good job!");
+			console.log("Good job, it finally works!");
 			//console.log(req.files.image.name);
 		}
 		//JAK ZROBIĆ POP-UP !!!
-		
+		else if (email === false) {
+			res.status(400).send("You have entered an invalid email address!");
+			console.log("Wrong email");
+		}
 		else {
 			res.redirect(302, 'failure.html');
+			console.log("Come on! You can do better!");
 		}
 	}
 });

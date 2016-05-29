@@ -10,7 +10,7 @@
     <div class="container">
         <h1>Formularz uploadu plików</h1>
 
-        <form action="/upload-form-endpoint"  method="POST">
+        <form action="/upload-form-endpoint" enctype="multipart/form-data" method="POST">
             <p>
                 <label for="email">E-mail</label><br />
                 <input type="text" id="email" name="email">
