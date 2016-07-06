@@ -16,5 +16,26 @@
   "bugs": {
     "url": "https://github.com/Qbitz/obsluga-formularzy-node-sass-gulp/issues"
   },
-  "homepage": "https://github.com/Qbitz/obsluga-formularzy-node-sass-gulp"
+  "homepage": "https://github.com/Qbitz/obsluga-formularzy-node-sass-gulp",
+  "dependencies": {
+    "express": "^4.14.0",
+    "file-system": "^2.2.1",
+    "file-type": "^3.8.0",
+    "formidable": "^1.0.17",
+    "http-proxy": "^1.14.0",
+    "nodemon": "^1.9.2",
+    "proxy-middleware": "^0.15.0",
+    "read-chunk": "^2.0.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.13.0",
+    "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-nodemon": "^2.1.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-ruby-sass": "^2.0.6",
+    "gulp-sass": "^2.3.1",
+    "gulp-uglify": "^1.5.4",
+    "gulp-watch": "^4.3.8"
+  }
 }
